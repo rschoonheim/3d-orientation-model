@@ -3,32 +3,9 @@ project(3d_orientation_model C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(
-        # Executable
-        #
-        3d_orientation_model
-        main.c
+add_executable(3d_orientation_model main.c world/world.h world/world.c)
 
-        # World
-        #
-        world/world.h
-        world/world.c
 
-        # Receptor
-        #
-        receptors/receptor.h
-        receptors/receptor.c
-
-        # Thalamus
-        #
-        thalamus/thalamus.h
-        thalamus/thalamus.c
-
-        # Cortex
-        #
-        cortex/cortex.h
-        cortex/cortex.c
-)
 
 # Add OpenGL
 #
@@ -38,6 +15,19 @@ find_package(OpenGL REQUIRED)
 #
 find_package(glfw3 REQUIRED)
 
+
+add_library(
+        person
+        person/person.c
+        person/person.h
+)
+
+# Link thalamus to the executable
+#
+target_link_libraries(3d_orientation_model person)
+
+
 # Link OpenGL and GLFW to the executable
 #
 target_link_libraries(3d_orientation_model OpenGL::GL glfw)
+

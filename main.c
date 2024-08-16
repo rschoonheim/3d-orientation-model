@@ -3,12 +3,20 @@
 #include <GLFW/glfw3.h>
 
 #include "world/world.h"
+#include "person/person.h"
 
 int main(void) {
-
     // Initialize the world
     //
     World *world = worldCreate(100, 100, 100);
+
+    // Initialize the person
+    //
+    Person *person = personCreate();
+    wirePersonToWorld(person, world);
+
+    return 0;
+
 
     // Initialize the library
     //
@@ -18,7 +26,7 @@ int main(void) {
 
     // Create a windowed mode window and its OpenGL context
     //
-    GLFWwindow* window = glfwCreateWindow(640, 480, "3D Orientation Model", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(640, 480, "3D Orientation Model", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
