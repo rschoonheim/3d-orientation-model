@@ -2,8 +2,13 @@
 
 #include <GLFW/glfw3.h>
 
+#include "world/world.h"
 
 int main(void) {
+
+    // Initialize the world
+    //
+    World *world = worldCreate(100, 100, 100);
 
     // Initialize the library
     //
@@ -11,7 +16,8 @@ int main(void) {
         return -1;
     }
 
-    // Create window
+    // Create a windowed mode window and its OpenGL context
+    //
     GLFWwindow* window = glfwCreateWindow(640, 480, "3D Orientation Model", NULL, NULL);
     if (!window) {
         glfwTerminate();
@@ -19,6 +25,7 @@ int main(void) {
     }
 
     // Main loop
+    //
     while (!glfwWindowShouldClose(window)) {
         // Render here
         glClear(GL_COLOR_BUFFER_BIT);

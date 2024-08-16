@@ -9,6 +9,11 @@ add_executable(
         3d_orientation_model
         main.c
 
+        # World
+        #
+        world/world.h
+        world/world.c
+
         # Receptor
         #
         receptors/receptor.h
